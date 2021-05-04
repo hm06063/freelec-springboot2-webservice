@@ -1,0 +1,36 @@
+buildscript{
+    ext{//build.gradle에서 사용하는 전역변수를 설정하겠다
+        springBootVersion='2.1.7.RELEASE'
+    }
+    repositories{
+        mavenCentral()
+        jcenter()
+    }
+    dependencies{
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+/* java, eclipse, springframework, dependency-management 네개는 자바, 스프링 부트를 사용하기 위한 필수 플러그인들
+* dependency-management는 스프링 부트의 의존성들을 관리해주는 플러그인
+* repository는 각종 의존성들을 어떤 원격 저장소에서 받을지를 정함.
+* 기본은 mavneCentral인데 요새는 라이브러리 업로드 난이도 땜에 jcenter 많이 사용
+* 단축키 ctrl+space -> 라이브러리 목록
+* 의존성 코드에서 특정 버전을 명시하면 안됨! 그래야 맨위 org.springframework.boot:spring-boot-gradle-plugin:springBootVersion 따라감
+ */
